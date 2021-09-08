@@ -28,7 +28,7 @@ namespace Microsoft.AspNetCore.Http
         public bool ThrowOnBadRequest { get; init; }
 
         /// <summary>
-        /// Prevent the <see cref="RequestDelegateFactory" /> from inferring a parameter should be bound from the request body without an attribute that implements <see cref="IFromBodyMetadata"/>.
+        /// Gets or sets a value that prevents <see cref="RequestDelegateFactory" /> from inferring a parameter should be bound from the request body without an attribute that implements <see cref="IFromBodyMetadata"/>.
         /// </summary>
         public bool DisableInferBodyFromParameters { get; init; }
     }
