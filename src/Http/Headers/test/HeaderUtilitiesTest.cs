@@ -93,7 +93,7 @@ public class HeaderUtilitiesTest
     public void TryParseSeconds_Fails(string? headerValues, string? targetValue)
     {
         TimeSpan? value;
-        Assert.False(HeaderUtilities.TryParseSeconds(new StringValues(headerValues), targetValue, out value));
+        Assert.False(HeaderUtilities.TryParseSeconds(new StringValues(headerValues), targetValue!, out value));
     }
 
     [Theory]
@@ -170,7 +170,7 @@ public class HeaderUtilitiesTest
     [InlineData("directive1=value;q=0.6;directive2 = 42 ", "directive2", false)]
     public void ContainsCacheDirective_MatchesExactValue(string? headerValues, string? targetValue, bool contains)
     {
-        Assert.Equal(contains, HeaderUtilities.ContainsCacheDirective(new StringValues(headerValues), targetValue));
+        Assert.Equal(contains, HeaderUtilities.ContainsCacheDirective(new StringValues(headerValues), targetValue!));
     }
 
     [Theory]

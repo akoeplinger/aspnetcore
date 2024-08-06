@@ -59,7 +59,7 @@ public class BinaryBlobTest
     public void Ctor_Data_Bad(byte[]? data)
     {
         // Act & assert
-        var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new BinaryBlob(32, data));
+        var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new BinaryBlob(32, data!));
         Assert.Equal("data", ex.ParamName);
     }
 
