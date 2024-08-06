@@ -88,7 +88,7 @@ public class CreatedResultTests
 
         // Assert
         Assert.Equal(StatusCodes.Status201Created, httpContext.Response.StatusCode);
-        AssertEqual(0, httpContext.Response.Headers["Location"].Count);
+        Assert.Equal(0, httpContext.Response.Headers["Location"].Count);
     }
 
     [Fact]
