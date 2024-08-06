@@ -396,26 +396,26 @@ public abstract class PhysicalFileResultTestBase
     [InlineData(".\\SubFolder\\SubFolderTestFile.txt")]
     [InlineData("./SubFolder\\SubFolderTestFile.txt")]
     [InlineData(".\\SubFolder/SubFolderTestFile.txt")]
-    public void ExecuteAsync_ThrowsDirectoryNotFound_IfItCanNotFindTheDirectory_ForRootPaths(string path)
+    public async Task ExecuteAsync_ThrowsDirectoryNotFound_IfItCanNotFindTheDirectory_ForRootPaths(string path)
     {
         // Arrange
         var httpContext = GetHttpContext();
 
         // Act & Assert
-        Assert.ThrowsAsync<DirectoryNotFoundException>(
+        await Assert.ThrowsAsync<DirectoryNotFoundException>(
             () => ExecuteAsync(httpContext, path, "text/plain"));
     }
 
     [Theory]
     [InlineData("/FilePathResultTestFile.txt")]
     [InlineData("\\FilePathResultTestFile.txt")]
-    public void ExecuteAsync_ThrowsFileNotFound_WhenFileDoesNotExist_ForRootPaths(string path)
+    public async Task ExecuteAsync_ThrowsFileNotFound_WhenFileDoesNotExist_ForRootPaths(string path)
     {
         // Arrange
         var httpContext = GetHttpContext();
 
         // Act & Assert
-        Assert.ThrowsAsync<FileNotFoundException>(
+        await Assert.ThrowsAsync<FileNotFoundException>(
             () => ExecuteAsync(httpContext, path, "text/plain"));
     }
 
