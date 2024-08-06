@@ -12,7 +12,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 
 public class TagHelperOutputExtensionsTest
 {
-    public static TheoryData<string, TagHelperAttributeList, TagHelperAttributeList, IEnumerable<TagHelperAttribute> CopyHtmlAttributeData_MaintainsOrder
+    public static TheoryData<string, TagHelperAttributeList, TagHelperAttributeList, IEnumerable<TagHelperAttribute>> CopyHtmlAttributeData_MaintainsOrder
     {
         get
         {
