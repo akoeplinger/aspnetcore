@@ -318,9 +318,9 @@ public abstract class FileStreamResultTestBase
         var body = await streamReader.ReadToEndAsync();
         Assert.Equal(StatusCodes.Status304NotModified, httpResponse.StatusCode);
         Assert.Null(httpResponse.ContentLength);
-        Assert.Equal(0, (httpResponse.Headers.ContentRange.Count);
+        Assert.Equal(0, httpResponse.Headers.ContentRange.Count);
         Assert.False(httpResponse.Headers.ContainsKey(HeaderNames.ContentType));
-        Assert.NotEqual(0, (httpResponse.Headers.LastModified.Count);
+        Assert.NotEqual(0, httpResponse.Headers.LastModified.Count);
         Assert.Empty(body);
         Assert.False(readStream.CanSeek);
     }
