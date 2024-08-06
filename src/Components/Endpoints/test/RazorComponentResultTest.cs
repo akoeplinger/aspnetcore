@@ -34,7 +34,7 @@ public class RazorComponentResultTest
     {
         var paramsDict = new Dictionary<string, object> { { "First", 123 } };
         var result = new RazorComponentResult(typeof(SimpleComponent), paramsDict);
-        Assert.Single(1, result.Parameters);
+        Assert.Single(result.Parameters);
         Assert.Equal(123, result.Parameters["First"]);
         Assert.Same(paramsDict, result.Parameters);
     }
