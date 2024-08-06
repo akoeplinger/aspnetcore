@@ -347,7 +347,7 @@ public class AuthorizeViewTest
     }
 
     [Fact]
-    public async Task RendersAuthorizingUntilAuthorizationCompletedAsync()
+    public void RendersAuthorizingUntilAuthorizationCompleted()
     {
         // Arrange
         var @event = new ManualResetEventSlim();
@@ -377,7 +377,9 @@ public class AuthorizeViewTest
 
         // Act/Assert 2: Auth process completes asynchronously
         @event.Reset();
-        authTcs.SetResult(await CreateAuthenticationState("Monsieur"));
+#pragma warning disable xUnit1031 // Do not use blocking task operations in test method
+        authTcs.SetResult(CreateAuthenticationState("Monsieur").Result);
+#pragma warning restore xUnit1031 // Do not use blocking task operations in test method
 
         // We need to wait here because the continuations of SetResult will be scheduled to run asynchronously.
         @event.Wait(Timeout);

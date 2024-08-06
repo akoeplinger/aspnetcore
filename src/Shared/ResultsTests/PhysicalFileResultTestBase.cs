@@ -227,7 +227,7 @@ public abstract class PhysicalFileResultTestBase
         var httpResponse = httpContext.Response;
         httpResponse.Body.Seek(0, SeekOrigin.Begin);
         var streamReader = new StreamReader(httpResponse.Body);
-        var body = awawit streamReader.ReadToEndAsync();
+        var body = await streamReader.ReadToEndAsync();
         Assert.Equal(StatusCodes.Status412PreconditionFailed, httpResponse.StatusCode);
         Assert.Null(httpResponse.ContentLength);
         Assert.Equal(0, httpResponse.Headers.ContentRange.Count);
