@@ -47,47 +47,21 @@ public class Http1HttpProtocolFeatureCollectionTests
     }
 
     [Fact]
-    public int FeaturesStartAsSelf()
+    public void FeaturesStartAsSelf()
     {
-        var featureCount = 0;
-        foreach (var featureIter in _collection)
-        {
-            Type type = featureIter.Key;
-            if (type.IsAssignableFrom(typeof(HttpProtocol)))
-            {
-                var featureLookup = _collection[type];
-                Assert.Same(featureLookup, featureIter.Value);
-                Assert.Same(featureLookup, _collection);
-                featureCount++;
-            }
-        }
+        var featureCount = GetFeaturesCount();
 
         Assert.NotEqual(0, featureCount);
-
-        return featureCount;
     }
 
     [Fact]
-    public int FeaturesCanBeAssignedTo()
+    public void FeaturesCanBeAssignedTo()
     {
         var featureCount = SetFeaturesToNonDefault();
         Assert.NotEqual(0, featureCount);
 
-        featureCount = 0;
-        foreach (var feature in _collection)
-        {
-            Type type = feature.Key;
-            if (type.IsAssignableFrom(typeof(HttpProtocol)))
-            {
-                Assert.Same(_collection[type], feature.Value);
-                Assert.NotSame(_collection[type], _collection);
-                featureCount++;
-            }
-        }
-
+        featureCount = GetFeaturesCount();
         Assert.NotEqual(0, featureCount);
-
-        return featureCount;
     }
 
     [Fact]
@@ -95,7 +69,7 @@ public class Http1HttpProtocolFeatureCollectionTests
     {
         var featuresAssigned = SetFeaturesToNonDefault();
         _http1Connection.ResetFeatureCollection();
-        var featuresReset = FeaturesStartAsSelf();
+        var featuresReset = GetFeaturesCount();
 
         Assert.Equal(featuresAssigned, featuresReset);
     }
@@ -108,7 +82,7 @@ public class Http1HttpProtocolFeatureCollectionTests
         CompareGenericGetterToIndexer();
 
         _http1Connection.ResetFeatureCollection();
-        var featuresReset = FeaturesStartAsSelf();
+        var featuresReset = GetFeaturesCount();
 
         Assert.Equal(featuresAssigned, featuresReset);
     }
@@ -232,6 +206,23 @@ public class Http1HttpProtocolFeatureCollectionTests
 
         Assert.NotEqual(0, featureCount);
 
+        return featureCount;
+    }
+
+    public int GetFeaturesCount()
+    {
+        var featureCount = 0;
+        foreach (var featureIter in _collection)
+        {
+            Type type = featureIter.Key;
+            if (type.IsAssignableFrom(typeof(HttpProtocol)))
+            {
+                var featureLookup = _collection[type];
+                Assert.Same(featureLookup, featureIter.Value);
+                Assert.Same(featureLookup, _collection);
+                featureCount++;
+            }
+        }
         return featureCount;
     }
 
