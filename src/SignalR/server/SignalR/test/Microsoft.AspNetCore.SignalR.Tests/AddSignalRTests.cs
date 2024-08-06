@@ -83,7 +83,7 @@ namespace Microsoft.AspNetCore.SignalR.Tests
             });
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
-            Assert.Equal(1, serviceProvider.GetRequiredService<IOptions<HubOptions>>().Value.SupportedProtocols.Count);
+            Assert.Single(serviceProvider.GetRequiredService<IOptions<HubOptions>>().Value.SupportedProtocols);
             Assert.Empty(serviceProvider.GetRequiredService<IOptions<HubOptions<CustomHub>>>().Value.SupportedProtocols);
 
             Assert.Null(serviceProvider.GetRequiredService<IOptions<HubOptions>>().Value.HubFilters);

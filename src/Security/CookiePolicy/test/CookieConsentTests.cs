@@ -265,7 +265,7 @@ public class CookieConsentTests
         });
 
         var cookies = SetCookieHeaderValue.ParseList(httpContext.Response.Headers.SetCookie);
-        Assert.Equal(1, cookies.Count);
+        Assert.Single(cookies);
         var consentCookie = cookies[0];
         Assert.Equal(".AspNet.Consent1", consentCookie.Name);
         Assert.Equal("yes1", consentCookie.Value);
@@ -443,7 +443,7 @@ public class CookieConsentTests
         });
 
         var cookies = SetCookieHeaderValue.ParseList(httpContext.Response.Headers.SetCookie);
-        Assert.Equal(1, cookies.Count);
+        Assert.Single(cookies);
         var consentCookie = cookies[0];
         Assert.Equal(".AspNet.Consent1", consentCookie.Name);
         Assert.Equal("", consentCookie.Value);
@@ -508,7 +508,7 @@ public class CookieConsentTests
         });
 
         var cookies = SetCookieHeaderValue.ParseList(httpContext.Response.Headers.SetCookie);
-        Assert.Equal(1, cookies.Count);
+        Assert.Single(cookies);
         var testCookie = cookies[0];
         Assert.Equal("Test", testCookie.Name);
         Assert.Equal("", testCookie.Value);
@@ -572,7 +572,7 @@ public class CookieConsentTests
         });
 
         var cookies = SetCookieHeaderValue.ParseList(httpContext.Response.Headers.SetCookie);
-        Assert.Equal(1, cookies.Count);
+        Assert.Single(cookies);
         var consentCookie = cookies[0];
         Assert.Equal(".AspNet.Consent", consentCookie.Name);
         Assert.Equal("yes", consentCookie.Value);
@@ -580,7 +580,7 @@ public class CookieConsentTests
         Assert.NotNull(consentCookie.Expires);
 
         cookies = SetCookieHeaderValue.ParseList(httpContext.Response.Headers["ManualCookie"]);
-        Assert.Equal(1, cookies.Count);
+        Assert.Single(cookies);
         var manualCookie = cookies[0];
         Assert.Equal(consentCookie.Name, manualCookie.Name);
         Assert.Equal(consentCookie.Value, manualCookie.Value);
@@ -625,7 +625,7 @@ public class CookieConsentTests
         });
 
         var cookies = SetCookieHeaderValue.ParseList(httpContext.Response.Headers.SetCookie);
-        Assert.Equal(1, cookies.Count);
+        Assert.Single(cookies);
         var consentCookie = cookies[0];
         Assert.Equal(".AspNet.Consent1", consentCookie.Name);
         Assert.Equal("yes1", consentCookie.Value);
@@ -633,7 +633,7 @@ public class CookieConsentTests
         Assert.NotNull(consentCookie.Expires);
 
         cookies = SetCookieHeaderValue.ParseList(httpContext.Response.Headers["ManualCookie"]);
-        Assert.Equal(1, cookies.Count);
+        Assert.Single(cookies);
         var manualCookie = cookies[0];
         Assert.Equal(consentCookie.Name, manualCookie.Name);
         Assert.Equal(consentCookie.Value, manualCookie.Value);
@@ -670,7 +670,7 @@ public class CookieConsentTests
         });
 
         var cookies = SetCookieHeaderValue.ParseList(httpContext.Response.Headers.SetCookie);
-        Assert.Equal(1, cookies.Count);
+        Assert.Single(cookies);
         var consentCookie = cookies[0];
         Assert.Equal(".AspNet.Consent", consentCookie.Name);
         Assert.Equal("true", consentCookie.Value);
@@ -678,7 +678,7 @@ public class CookieConsentTests
         Assert.NotNull(consentCookie.Expires);
 
         cookies = SetCookieHeaderValue.ParseList(httpContext.Response.Headers["ManualCookie"]);
-        Assert.Equal(1, cookies.Count);
+        Assert.Single(cookies);
         var manualCookie = cookies[0];
         Assert.Equal(consentCookie.Name, manualCookie.Name);
         Assert.Equal(consentCookie.Value, manualCookie.Value);

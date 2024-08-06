@@ -38,7 +38,7 @@ public class SchemaGeneratorIntegrationTests
         // Assert
         schema = repository.Schemas[schema.Reference.Id];
         Assert.Equal("object", schema.Type);
-        Assert.Equal(1, schema.Properties.Count);
+        Assert.Single(schema.Properties);
 
         var enumSchema = repository.Schemas[schema.Properties["enumValue"].Reference.Id];
         Assert.Equal("string", enumSchema.Type);
@@ -99,7 +99,7 @@ public class SchemaGeneratorIntegrationTests
         // Assert
         schema = repository.Schemas[schema.Reference.Id];
         Assert.Equal("object", schema.Type);
-        Assert.Equal(1, schema.Properties.Count);
+        Assert.Single(schema.Properties);
         Assert.Equal("RecursiveMessage", schema.Properties["child"].Reference.Id);
     }
 
@@ -159,7 +159,7 @@ public class SchemaGeneratorIntegrationTests
         Assert.Equal("object", schema.Type);
         Assert.NotNull(schema.AdditionalProperties);
         Assert.Null(schema.AdditionalProperties.Type);
-        Assert.Equal(1, schema.Properties.Count);
+        Assert.Single(schema.Properties);
         Assert.Equal("string", schema.Properties["@type"].Type);
     }
 
@@ -189,7 +189,7 @@ public class SchemaGeneratorIntegrationTests
         // Assert
         schema = repository.Schemas[schema.Reference.Id];
         Assert.Equal("object", schema.Type);
-        Assert.Equal(1, schema.Properties.Count);
+        Assert.Single(schema.Properties);
         Assert.Equal("object", schema.Properties["mapValue"].Type);
         Assert.Equal("number", schema.Properties["mapValue"].AdditionalProperties.Type);
         Assert.Equal("double", schema.Properties["mapValue"].AdditionalProperties.Format);
@@ -204,7 +204,7 @@ public class SchemaGeneratorIntegrationTests
         // Assert
         schema = repository.Schemas[schema.Reference.Id];
         Assert.Equal("object", schema.Type);
-        Assert.Equal(1, schema.Properties.Count);
+        Assert.Single(schema.Properties);
         Assert.Equal("string", schema.Properties["fieldMaskValue"].Type);
     }
 }

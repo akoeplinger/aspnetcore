@@ -206,7 +206,7 @@ public class RegistryXmlRepositoryTests
                 // Now that the repository has read the element from the registry, delete it out-of-band.
                 regKey.DeleteValue("friendly1");
 
-                Assert.Equal(1, deletableElements.Count);
+                Assert.Single(deletableElements);
 
                 deletableElements.First().DeletionOrder = 1;
             }));
