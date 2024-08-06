@@ -42,7 +42,7 @@ public class RegistryXmlRepositoryTests
             var allElements = repository.GetAllElements();
 
             // Assert
-            Assert.Equal(0, allElements.Count);
+            Assert.Empty(allElements);
         });
     }
 

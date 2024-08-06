@@ -143,7 +143,7 @@ public class SchemaGeneratorIntegrationTests
         var resolvedSchema = repository.Schemas[schema.Reference.Id];
 
         Assert.Equal("object", resolvedSchema.Type);
-        Assert.Equal(0, resolvedSchema.Properties.Count);
+        Assert.Empty(resolvedSchema.Properties);
         Assert.NotNull(resolvedSchema.AdditionalProperties);
         Assert.Null(resolvedSchema.AdditionalProperties.Type);
     }

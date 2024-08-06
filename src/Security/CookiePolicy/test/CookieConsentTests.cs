@@ -46,7 +46,7 @@ public class CookieConsentTests
             context.Response.Cookies.Append("Test", "Value");
             return Task.CompletedTask;
         });
-        Assert.Empty(httpContext.Response.Headers.SetCookie);
+        Assert.Equal(0, httpContext.Response.Headers.SetCookie.Count);
     }
 
     [Fact]
@@ -65,7 +65,7 @@ public class CookieConsentTests
             context.Response.Cookies.Append("Test", "Value", new CookieOptions() { IsEssential = false });
             return Task.CompletedTask;
         });
-        Assert.Empty(httpContext.Response.Headers.SetCookie);
+        Assert.Equal(0, httpContext.Response.Headers.SetCookie.Count);
     }
 
     [Fact]
@@ -140,7 +140,7 @@ public class CookieConsentTests
             context.Response.Cookies.Append("Test", "Value", new CookieOptions() { IsEssential = true });
             return Task.CompletedTask;
         });
-        Assert.Empty(httpContext.Response.Headers.SetCookie);
+        Assert.Equal(0, httpContext.Response.Headers.SetCookie.Count);
     }
 
     [Fact]
@@ -186,7 +186,7 @@ public class CookieConsentTests
             context.Response.Cookies.Append("Test", "Value");
             return Task.CompletedTask;
         });
-        Assert.Empty(httpContext.Response.Headers.SetCookie);
+        Assert.Equal(0, httpContext.Response.Headers.SetCookie.Count);
     }
 
     [Fact]
@@ -335,7 +335,7 @@ public class CookieConsentTests
 
         var reader = new StreamReader(httpContext.Response.Body);
         Assert.Equal("Started.Granted.", await reader.ReadToEndAsync());
-        Assert.Empty(httpContext.Response.Headers.SetCookie);
+        Assert.Equal(0, httpContext.Response.Headers.SetCookie.Count);
     }
 
     [Fact]
@@ -363,7 +363,7 @@ public class CookieConsentTests
             return Task.CompletedTask;
         });
 
-        Assert.Empty(httpContext.Response.Headers.SetCookie);
+        Assert.Equal(0, httpContext.Response.Headers.SetCookie.Count);
     }
 
     [Fact]
@@ -541,7 +541,7 @@ public class CookieConsentTests
             return Task.CompletedTask;
         });
 
-        Assert.Empty(httpContext.Response.Headers.SetCookie);
+        Assert.Equal(0, httpContext.Response.Headers.SetCookie.Count);
     }
 
     [Fact]
