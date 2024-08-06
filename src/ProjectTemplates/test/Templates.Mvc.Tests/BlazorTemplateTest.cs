@@ -34,12 +34,12 @@ public class BlazorTemplateTest : LoggedTest
     [ConditionalTheory]
     [MemberData(nameof(ArgsData))]
     [SkipOnHelix("Cert failure, https://github.com/dotnet/aspnetcore/issues/28090", Queues = "All.OSX;" + HelixConstants.Windows10Arm64 + HelixConstants.DebianArm64)]
-    public Task BlazorWebTemplate_NoAuth(string[] args) => BlazorWebTemplate_Core(args);
+    public Task BlazorWebTemplate_NoAuth(object[] args) => BlazorWebTemplate_Core(args);
 
     [ConditionalTheory]
     [MemberData(nameof(ArgsData))]
     [SkipOnHelix("Cert failure, https://github.com/dotnet/aspnetcore/issues/28090", Queues = "All.OSX;" + HelixConstants.Windows10Arm64 + HelixConstants.DebianArm64)]
-    public Task BlazorWebTemplate_IndividualAuth(string[] args) => BlazorWebTemplate_Core([ArgConstants.IndividualAuth, ..args]);
+    public Task BlazorWebTemplate_IndividualAuth(object[] args) => BlazorWebTemplate_Core([ArgConstants.IndividualAuth, ..args]);
 
     [ConditionalTheory]
     [InlineData(false)]
