@@ -198,7 +198,7 @@ public abstract class PhysicalFileResultTestBase
         var httpResponse = httpContext.Response;
         httpResponse.Body.Seek(0, SeekOrigin.Begin);
         var streamReader = new StreamReader(httpResponse.Body);
-        var body = streamReader.ReadToEndAsync().Result;
+        var body = await streamReader.ReadToEndAsync();
         var contentRange = new ContentRangeHeaderValue(34);
         Assert.Equal(StatusCodes.Status416RangeNotSatisfiable, httpResponse.StatusCode);
         Assert.Equal("bytes", httpResponse.Headers.AcceptRanges);
@@ -227,7 +227,7 @@ public abstract class PhysicalFileResultTestBase
         var httpResponse = httpContext.Response;
         httpResponse.Body.Seek(0, SeekOrigin.Begin);
         var streamReader = new StreamReader(httpResponse.Body);
-        var body = streamReader.ReadToEndAsync().Result;
+        var body = awawit streamReader.ReadToEndAsync();
         Assert.Equal(StatusCodes.Status412PreconditionFailed, httpResponse.StatusCode);
         Assert.Null(httpResponse.ContentLength);
         Assert.Equal(0, httpResponse.Headers.ContentRange.Count);
@@ -254,7 +254,7 @@ public abstract class PhysicalFileResultTestBase
         var httpResponse = httpContext.Response;
         httpResponse.Body.Seek(0, SeekOrigin.Begin);
         var streamReader = new StreamReader(httpResponse.Body);
-        var body = streamReader.ReadToEndAsync().Result;
+        var body = await streamReader.ReadToEndAsync();
         Assert.Equal(StatusCodes.Status304NotModified, httpResponse.StatusCode);
         Assert.Null(httpResponse.ContentLength);
         Assert.Equal(0, httpResponse.Headers.ContentRange.Count);
